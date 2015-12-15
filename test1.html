@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>北航Clubs</title>
+    <script src = "clubs_ajax.js"></script>
+    <script>
+        function apiBack(ccc){
+            
+            p0 = document.getElementById("p0");
+            if (ccc.xhr.readyState == 4){
+                if (ccc.xhr.status == 200){
+                    p0.innerText = "Status code: "+ccc.xhr.status;
+                    p0.innerText += "\nReplied with: \n"+ccc.xhr.responseText;
+                }
+                else {
+                    p0.innerText = "Status code: "+ccc.xhr.status;
+                    p0.innerText += "\nReplied with: \n"+ccc.xhr.responseText;
+                }
+            }
+            else {
+                p0.innerText = "requesting...";
+            }
+        }
+        function gogogo(){
+            
+            text_url = document.getElementById("text_url");
+            text_method = document.getElementById("text_method");
+            text_token = document.getElementById("text_token");
+            text_uid = document.getElementById("text_uid");
+            text_body = document.getElementById("text_body");
+            ccc = new ClubsAjax();
+            ccc.url = text_url.value;
+            ccc.method = text_method.value;
+            ccc.callback = apiBack;
+            ccc.header = {"token":text_token.value,"uid":text_uid.value};
+            ccc.body = text_body.value;
+            ccc.startAjax();
+        }
+
+
+    </script>
+</head>
+<body>
+<h1>Hello!</h1>
+<p>方便复制：http://123.57.144.112:8005/api/</p>
+<p>URL: <input id = "text_url" type = "text" style="width:400px;" value = "http://123.57.144.112:8005/api/"></p>
+<p>Method: <select id = "text_method">
+    <option value = "GET">GET</option>
+    <option value = "POST">POST</option>
+</select></p>
+<p>header-token: <input id = "text_token" type = "text" ></p>
+<p>header-uid: <input id = "text_uid" type = "text" ></p>
+<p>request-body:</p>
+<textarea id = "text_body"style = "width:400px; height: 100px;"></textarea><br>
+<button onclick = "gogogo();">开始</button>
+<p id="p0">ready...</p>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index1</title>
+    <style>
+        :link,:visited { text-decoration:none }
+
+        ul,ol { list-style:none }
+        h1,h2,h3,h4,h5,h6,pre,code { font-size:1em; }
+
+        ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input
+        { margin:0; padding:0 }
+
+        a img,:link img,:visited img { border:none }
+
+        address { font-style:normal }
+    </style>
+
+    <link href="css/flickerplate.css" rel="stylesheet">
+
+    <script src = "js/jquery-1.8.3.min.js"></script>
+    <!-- modernizr是HTML5 CSS3特性检测库，用于兼容不支持某些特性的浏览器 -->
+    <script src = "js/modernizr-custom-v2.7.1.min.js"></script>
+    <!-- jQuery-finger是触摸事件插件，不需要支持移动端可以去掉 -->
+    <script src = "js/jquery-finger-v0.1.0.min.js"></script>
+    <!-- flickerplate -->
+    <script src = "js/flickerplate.min.js"></script>
+
+
+    <script>
+        $(function(){
+           $(".flicker-example").flicker({
+              arrows: true,
+               arrows_constraint: false,
+               auto_flick: false,
+               auto_flick_delay: 10,
+               block_text: true,
+               dot_navigation: true,
+               dot_alignment: 'center',
+               flick_animation: 'transform-slide',
+               flick_position: 1,
+               inner_width: false,
+               theme: 'light'
+           });
+        });
+
+    </script>
+    <style>
+        /*.flicker-example { height: 560px; margin-left: auto; margin-right: auto;}*/
+        .flicker-example{height: 100vh;}
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+
+    </div>
+
+    <div class="flicker-example">
+        <ul>
+            <li data-background="img/1.jpg">
+                <div class="flick-title">标题一</div>
+                <div class="flick-sub-text">内容内容内容</div>
+            </li>
+            <li data-background="img/2.jpg">
+                <div class="flick-title">标题二</div>
+                <div class="flick-sub-text">内容内容内容</div>
+            </li>
+            <li data-background="img/3.jpg">
+                <div class="flick-title">标题三</div>
+                <div class="flick-sub-text">内容内容内容</div>
+            </li>
+            <li data-background="img/4.jpg">
+                <div class="flick-title">标题三</div>
+                <div class="flick-sub-text">内容内容内容</div>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+</body>
+</html>
