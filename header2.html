@@ -6,6 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
 	<link rel="stylesheet" type="text/css" href="header2.css">
 	<style type="text/css">
+	em{display:block;width:0;height:0;font-size:0;line-height:0;
+	border-width:0 40px 40px 0;border-style:solid;border-color:#cf6 #fff #39c #ffc;_filter:chroma(color=#000000)/*色度滤镜,让IE6实现透明borderColor.滤镜的颜色值不可简写*/} 
+em.a{border-color:transparent transparent #fff transparent;_border-color:#000 #000 #fff #000} 
+em.b{border-color:transparent transparent transparent #fff;_border-color:#000 #000 #000 #fff} 
+em.c{border-color:#fff transparent transparent transparent;_border-color:#fff #000 #000 #000} 
+em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #fff #000 #000} 
 	</style>
 </head>
 <body>
@@ -53,7 +59,7 @@
 						</li>
 						<li>
 							<a href="#">
-								<span class = "iconfont icon">&#xe618;<i class = "hd-hide"></i></span>
+								<span class = "iconfont icon">&#xe618;<i class = ""></i></span>
 							</a>
 						</li>
 						<li>
@@ -70,7 +76,7 @@
 			<div class="left-nav">
 				<div class="left-item">
 					<h3>
-						<a href="#"><span>首页</span></a>
+						<a href="#" class = "cur"><span>首页</span></a>
 					</h3>
 				</div>
 				<div class="left-item">
@@ -108,32 +114,176 @@
 				</div>
 			</div>
 			<div class="right-main">
+				<!-- <em class = ""></em> -->
 				<div class="right-tab">
 					<ul>
-						<li class = "cur"><a href="#">全部</a></li>
-						<li><a href="#">活动</a></li>
-						<li><a href="#">资讯</a></li>
+						<li class = "cur"><a href="#">全部</a>
+							<span><i></i></span>
+						</li>
+						<li class = ""><a href="#">活动</a><span><i></i></span></li>
+						<li class = ""><a href="#">资讯</a><span><i></i></span></li>
 					</ul>
 				</div>
 				<div class="right-body">
-					<div class="right-item">
-						<div class = "item-first">
-							
+					<div class="right-card hd">
+						<!-- <div class="tag"></div> -->
+						<div class="bgimg"></div>
+						<div class = "card-first">
+							<div class="club-head">
+								<a href="#">
+									<img src="img/lingfeng.jpg" alt="凌峰社">
+									<p>凌峰社</p>
+								</a>
+							</div>
+							<div class="card-content">
+								<p class = "title"><a href="#">【凌峰·冬训】冬训正式开启</a></p>
+								<p class = "line"></p>
+								<p class = "abstract"><a href="#">【凌峰·活动】周末香山看红叶2015-10-15 北航凌峰社活动简介活动分级： （难度等级1.0，分级细则请见http://360.mafengwo.cn/travels/info.php?id=1051326）活动路线：香山活动类型：野外穿越活动时间： 2015.10.18活动人数： 10活动性质：非营利性活动预算：0元时间安排：（集合时间与地点）18号早上9点五道口公交站集合，之后坐公交车331路或630路到香山公交站下车，午饭自备，之后的时间安排相对自由，不过能保证沙河的同学在天黑之前能够回到沙河校区领队（联系方式）：梅寒 TEL 18810284632 QQ 2499447221 报名方式报名信息格式：姓名，性别，院系，班级，手机，可附上志愿职能做各方面负责人（队医、队记、装备...</a></p>
+								<div class = "foot">
+									<ul>
+										<li class = "time"> <span>今天 13:11 </span></li>
+										<li class = "enlist"><a href="#"><span>报 名</span></a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
-						<div class = "item-second">
-							
+						<!-- <div class = "card-second">
+							<ul>
+								<li id="time"> <span>今天 13:11 </span></li>
+								<li style = "float:right"><a href="#">123</a></li>
+							</ul>
+						</div> -->
+					</div>
+					<div class="right-body">
+					<div class="right-card hd">
+						<!-- <div class="tag"></div> -->
+						<div class="bgimg"></div>
+						<div class = "card-first">
+							<div class="club-head">
+								<a href="#">
+									<img src="img/lingfeng.jpg" alt="凌峰社">
+									<p>凌峰社</p>
+								</a>
+							</div>
+							<div class="card-content">
+								<p class = "title"><a href="#">【凌峰·冬训】冬训正式开启</a></p>
+								<p class = "line"></p>
+								<p class = "abstract"><a href="#">【凌峰·活动】周末香山看红叶2015-10-15 北航凌峰社活动简介活动分级： （难度等级1.0，分级细则请见http://360.mafengwo.cn/travels/info.php?id=1051326）活动路线：香山活动类型：野外穿越活动时间： 2015.10.18活动人数： 10活动性质：非营利性活动预算：0元时间安排：（集合时间与地点）18号早上9点五道口公交站集合，之后坐公交车331路或630路到香山公交站下车，午饭自备，之后的时间安排相对自由，不过能保证沙河的同学在天黑之前能够回到沙河校区领队（联系方式）：梅寒 TEL 18810284632 QQ 2499447221 报名方式报名信息格式：姓名，性别，院系，班级，手机，可附上志愿职能做各方面负责人（队医、队记、装备...</a></p>
+								<div class = "foot">
+									<ul>
+										<li class = "time"> <span>今天 13:11 </span></li>
+										<li class = "enlist"><a href="#"><span>报 名</span></a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
+						<!-- <div class = "card-second">
+							<ul>
+								<li id="time"> <span>今天 13:11 </span></li>
+								<li style = "float:right"><a href="#">123</a></li>
+							</ul>
+						</div> -->
 					</div>
-					<div class="item">
+					<div class="right-body">
+					<div class="right-card hd">
+						<!-- <div class="tag"></div> -->
+						<div class="bgimg"></div>
+						<div class = "card-first">
+							<div class="club-head">
+								<a href="#">
+									<img src="img/lingfeng.jpg" alt="凌峰社">
+									<p>凌峰社</p>
+								</a>
+							</div>
+							<div class="card-content">
+								<p class = "title"><a href="#">【凌峰·冬训】冬训正式开启</a></p>
+								<p class = "line"></p>
+								<p class = "abstract"><a href="#">【凌峰·活动】周末香山看红叶2015-10-15 北航凌峰社活动简介活动分级： （难度等级1.0，分级细则请见http://360.mafengwo.cn/travels/info.php?id=1051326）活动路线：香山活动类型：野外穿越活动时间： 2015.10.18活动人数： 10活动性质：非营利性活动预算：0元时间安排：（集合时间与地点）18号早上9点五道口公交站集合，之后坐公交车331路或630路到香山公交站下车，午饭自备，之后的时间安排相对自由，不过能保证沙河的同学在天黑之前能够回到沙河校区领队（联系方式）：梅寒 TEL 18810284632 QQ 2499447221 报名方式报名信息格式：姓名，性别，院系，班级，手机，可附上志愿职能做各方面负责人（队医、队记、装备...</a></p>
+								<div class = "foot">
+									<ul>
+										<li class = "time"> <span>今天 13:11 </span></li>
+										<li class = "enlist"><a href="#"><span>报 名</span></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- <div class = "card-second">
+							<ul>
+								<li id="time"> <span>今天 13:11 </span></li>
+								<li style = "float:right"><a href="#">123</a></li>
+							</ul>
+						</div> -->
+					</div>
+					<div class="right-body">
+					<div class="right-card hd">
+						<!-- <div class="tag"></div> -->
+						<div class="bgimg"></div>
+						<div class = "card-first">
+							<div class="club-head">
+								<a href="#">
+									<img src="img/lingfeng.jpg" alt="凌峰社">
+									<p>凌峰社</p>
+								</a>
+							</div>
+							<div class="card-content">
+								<p class = "title"><a href="#">【凌峰·冬训】冬训正式开启</a></p>
+								<p class = "line"></p>
+								<p class = "abstract"><a href="#">【凌峰·活动】周末香山看红叶2015-10-15 北航凌峰社活动简介活动分级： （难度等级1.0，分级细则请见http://360.mafengwo.cn/travels/info.php?id=1051326）活动路线：香山活动类型：野外穿越活动时间： 2015.10.18活动人数： 10活动性质：非营利性活动预算：0元时间安排：（集合时间与地点）18号早上9点五道口公交站集合，之后坐公交车331路或630路到香山公交站下车，午饭自备，之后的时间安排相对自由，不过能保证沙河的同学在天黑之前能够回到沙河校区领队（联系方式）：梅寒 TEL 18810284632 QQ 2499447221 报名方式报名信息格式：姓名，性别，院系，班级，手机，可附上志愿职能做各方面负责人（队医、队记、装备...</a></p>
+								<div class = "foot">
+									<ul>
+										<li class = "time"> <span>今天 13:11 </span></li>
+										<li class = "enlist"><a href="#"><span>报 名</span></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- <div class = "card-second">
+							<ul>
+								<li id="time"> <span>今天 13:11 </span></li>
+								<li style = "float:right"><a href="#">123</a></li>
+							</ul>
+						</div> -->
+					</div>
+					<div class="right-body">
+					<div class="right-card hd">
+						<!-- <div class="tag"></div> -->
+						<div class="bgimg"></div>
+						<div class = "card-first">
+							<div class="club-head">
+								<a href="#">
+									<img src="img/lingfeng.jpg" alt="凌峰社">
+									<p>凌峰社</p>
+								</a>
+							</div>
+							<div class="card-content">
+								<p class = "title"><a href="#">【凌峰·冬训】冬训正式开启</a></p>
+								<p class = "line"></p>
+								<p class = "abstract"><a href="#">【凌峰·活动】周末香山看红叶2015-10-15 北航凌峰社活动简介活动分级： （难度等级1.0，分级细则请见http://360.mafengwo.cn/travels/info.php?id=1051326）活动路线：香山活动类型：野外穿越活动时间： 2015.10.18活动人数： 10活动性质：非营利性活动预算：0元时间安排：（集合时间与地点）18号早上9点五道口公交站集合，之后坐公交车331路或630路到香山公交站下车，午饭自备，之后的时间安排相对自由，不过能保证沙河的同学在天黑之前能够回到沙河校区领队（联系方式）：梅寒 TEL 18810284632 QQ 2499447221 报名方式报名信息格式：姓名，性别，院系，班级，手机，可附上志愿职能做各方面负责人（队医、队记、装备...</a></p>
+								<div class = "foot">
+									<ul>
+										<li class = "time"> <span>今天 13:11 </span></li>
+										<li class = "enlist"><a href="#"><span>报 名</span></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- <div class = "card-second">
+							<ul>
+								<li id="time"> <span>今天 13:11 </span></li>
+								<li style = "float:right"><a href="#">123</a></li>
+							</ul>
+						</div> -->
+					</div>
+					<div class="right-card">
 						
 					</div>
-					<div class="item">
+					<div class="right-card">
 						
 					</div>
-					<div class="item">
+					<div class="right-card">
 						
 					</div>
-					<div class="item">
+					<div class="right-card">
 						
 					</div>
 				</div>
