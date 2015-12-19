@@ -5,14 +5,117 @@
 	<title>导航条设计</title>
 	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
 	<link rel="stylesheet" type="text/css" href="header2.css">
+	<script type="text/javascript" src = "js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src = "js/jquery.leanModal.min.js"></script>
 	<style type="text/css">
-	em{display:block;width:0;height:0;font-size:0;line-height:0;
-	border-width:0 40px 40px 0;border-style:solid;border-color:#cf6 #fff #39c #ffc;_filter:chroma(color=#000000)/*色度滤镜,让IE6实现透明borderColor.滤镜的颜色值不可简写*/} 
-em.a{border-color:transparent transparent #fff transparent;_border-color:#000 #000 #fff #000} 
-em.b{border-color:transparent transparent transparent #fff;_border-color:#000 #000 #000 #fff} 
-em.c{border-color:#fff transparent transparent transparent;_border-color:#fff #000 #000 #000} 
-em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #fff #000 #000} 
+	.flatbtn-blu { 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  color: #edf4f9;
+  text-decoration: none;
+  background-color: #4f94cf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 12px 26px 12px 26px;
+  line-height: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+/** modal window styles **/
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+
+#loginmodal {
+  width: 300px;
+  padding: 15px 20px;
+  background: #f3f6fa;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.flatbtn-blu:hover {
+  color: #fff;
+  background-color: #519dde;
+}
+.flatbtn-blu:active {
+  -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#loginform { /* no default styles */ }
+
+#loginform label { display: block; font-size: 1.1em; font-weight: bold; color: #7c8291; margin-bottom: 3px; }
+
+
+.txtfield { 
+  display: block;
+  width: 100%;
+  padding: 6px 5px;
+  margin-bottom: 15px;
+  font-family: 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+  color: #7988a3;
+  font-size: 1.4em;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#edf3f9), to(#fff));
+  background-image: -webkit-linear-gradient(top, #edf3f9, #fff);
+  background-image: -moz-linear-gradient(top, #edf3f9, #fff);
+  background-image: -ms-linear-gradient(top, #edf3f9, #fff);
+  background-image: -o-linear-gradient(top, #edf3f9, #fff);
+  background-image: linear-gradient(top, #edf3f9, #fff);
+  border: 1px solid;
+  border-color: #abbce8 #c3cae0 #b9c8ef;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.txtfield:focus {
+  outline: none;
+  color: #525864;
+  border-color: #84c0ee;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+}
+
 	</style>
+
+
 </head>
 <body>
 	<div class = "app">
@@ -42,15 +145,15 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 					</li>
 				</ul>
 				<ul class="nav hd-user">
-					<div class = "hd-hide">
+					<div>
 						<li >
-							<a href="#">
+							<a href="#loginmodal" id="modaltrigger">
 								<span class = "iconfont icon">&#xe610;</span>
 								<span>请登录</span>
 							</a>
 						</li>
 					</div>
-					<div>
+					<div class = "hd-hide">
 						<li>
 							<a href="#">
 								<span class = "iconfont icon">&#xe610;</span>
@@ -126,7 +229,6 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 				</div>
 				<div class="right-body">
 					<div class="right-card hd">
-						<!-- <div class="tag"></div> -->
 						<div class="bgimg"></div>
 						<div class = "card-first">
 							<div class="club-head">
@@ -147,16 +249,9 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 								</div>
 							</div>
 						</div>
-						<!-- <div class = "card-second">
-							<ul>
-								<li id="time"> <span>今天 13:11 </span></li>
-								<li style = "float:right"><a href="#">123</a></li>
-							</ul>
-						</div> -->
 					</div>
-					<div class="right-body">
+					
 					<div class="right-card hd">
-						<!-- <div class="tag"></div> -->
 						<div class="bgimg"></div>
 						<div class = "card-first">
 							<div class="club-head">
@@ -177,16 +272,9 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 								</div>
 							</div>
 						</div>
-						<!-- <div class = "card-second">
-							<ul>
-								<li id="time"> <span>今天 13:11 </span></li>
-								<li style = "float:right"><a href="#">123</a></li>
-							</ul>
-						</div> -->
 					</div>
-					<div class="right-body">
+					
 					<div class="right-card hd">
-						<!-- <div class="tag"></div> -->
 						<div class="bgimg"></div>
 						<div class = "card-first">
 							<div class="club-head">
@@ -207,16 +295,9 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 								</div>
 							</div>
 						</div>
-						<!-- <div class = "card-second">
-							<ul>
-								<li id="time"> <span>今天 13:11 </span></li>
-								<li style = "float:right"><a href="#">123</a></li>
-							</ul>
-						</div> -->
 					</div>
-					<div class="right-body">
+					
 					<div class="right-card hd">
-						<!-- <div class="tag"></div> -->
 						<div class="bgimg"></div>
 						<div class = "card-first">
 							<div class="club-head">
@@ -237,16 +318,9 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 								</div>
 							</div>
 						</div>
-						<!-- <div class = "card-second">
-							<ul>
-								<li id="time"> <span>今天 13:11 </span></li>
-								<li style = "float:right"><a href="#">123</a></li>
-							</ul>
-						</div> -->
 					</div>
-					<div class="right-body">
+					
 					<div class="right-card hd">
-						<!-- <div class="tag"></div> -->
 						<div class="bgimg"></div>
 						<div class = "card-first">
 							<div class="club-head">
@@ -267,12 +341,6 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 								</div>
 							</div>
 						</div>
-						<!-- <div class = "card-second">
-							<ul>
-								<li id="time"> <span>今天 13:11 </span></li>
-								<li style = "float:right"><a href="#">123</a></li>
-							</ul>
-						</div> -->
 					</div>
 					<div class="right-card">
 						
@@ -289,6 +357,18 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 				</div>
 			</div>
 		</div>
+		<div id="loginmodal" style="display:none;">
+    <h1>User Login</h1>
+    <form id="loginform" name="loginform" method="post" action="index.html">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" class="txtfield" tabindex="1">
+      
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" class="txtfield" tabindex="2">
+      
+      <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="flatbtn-blu hidemodal" value="Log In" tabindex="3"></div>
+    </form>
+  </div>
 
 		<br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br>
@@ -300,6 +380,15 @@ em.d{border-color:transparent #fff transparent transparent;_border-color:#000 #f
 		<br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br>
 	</div>
+	<script type="text/javascript">
+$(function(){
+  $('#loginform').submit(function(e){
+    return false;
+  });
+  
+  $('#modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+});
+</script>
 	
 	
 </body>

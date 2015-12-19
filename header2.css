@@ -37,7 +37,8 @@
 			position: relative;
 			height: 48px;
 			margin: 0px auto;
-			width: 1000px;
+			/*width: 1000px;*/
+			width: 760px;
 		}
 		.clearfix{
 			display: block;
@@ -105,7 +106,8 @@
 		}
 		.main{
 			background-color: rgba(70,149,194,0.3);
-			width:1000px;
+			/*width:1000px;*/
+			width: 760px;
 			min-height: 680px;
 			margin:0 auto;
 			padding: 16px 0 0 0;
