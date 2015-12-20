@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航条设计</title>
+	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="header2.css">
+	<script type="text/javascript" src = "js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src = "js/jquery.leanModal.min.js"></script>
+	<style type="text/css">
+	.flatbtn-blu { 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  color: #edf4f9;
+  text-decoration: none;
+  background-color: #4f94cf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 12px 26px 12px 26px;
+  line-height: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+/** modal window styles **/
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+
+#loginmodal {
+  width: 300px;
+  padding: 15px 20px;
+  background: #f3f6fa;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.flatbtn-blu:hover {
+  color: #fff;
+  background-color: #519dde;
+}
+.flatbtn-blu:active {
+  -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#loginform { /* no default styles */ }
+
+#loginform label { display: block; font-size: 1.1em; font-weight: bold; color: #7c8291; margin-bottom: 3px; }
+
+
+.txtfield { 
+  display: block;
+  width: 100%;
+  padding: 6px 5px;
+  margin-bottom: 15px;
+  font-family: 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+  color: #7988a3;
+  font-size: 1.4em;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#edf3f9), to(#fff));
+  background-image: -webkit-linear-gradient(top, #edf3f9, #fff);
+  background-image: -moz-linear-gradient(top, #edf3f9, #fff);
+  background-image: -ms-linear-gradient(top, #edf3f9, #fff);
+  background-image: -o-linear-gradient(top, #edf3f9, #fff);
+  background-image: linear-gradient(top, #edf3f9, #fff);
+  border: 1px solid;
+  border-color: #abbce8 #c3cae0 #b9c8ef;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.txtfield:focus {
+  outline: none;
+  color: #525864;
+  border-color: #84c0ee;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+}
+
+	</style>
+
+
+</head>
+<body>
+	<div class = "app">
+		<div class = "header">
+			<div class="hd-content">
+				<div class="logo">
+					<img src="img/clubs-logo.png" alt="">
+				</div>
+				<ul class="nav">
+					<li>
+						<a href="#" class = "cur">
+							<span class = "iconfont icon">&#xe60e;</span>
+							<span>首页</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class = "iconfont icon">&#xe631;</span>
+							<span>百团</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class = "iconfont icon">&#xe600;</span>
+							<span>发现</span>
+						</a>
+					</li>
+				</ul>
+				<ul class="nav hd-user">
+					<div>
+						<li >
+							<a href="#loginmodal" id="modaltrigger">
+								<span class = "iconfont icon">&#xe610;</span>
+								<span>请登录</span>
+							</a>
+						</li>
+					</div>
+					<div class = "hd-hide">
+						<li>
+							<a href="#">
+								<span class = "iconfont icon">&#xe610;</span>
+								<span>江昊</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class = "iconfont icon">&#xe618;<i class = ""></i></span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class = "iconfont icon" style = "font-size:22px;">&#xe608;</span>
+							</a>
+						</li>
+					</div>
+				</ul>
+			</div>
+		</div>
+
+		<div class="main">
+			<div class="left-nav">
+				<div class="left-item">
+					<h3>
+						<a href="#" class = ""><span>首页</span></a>
+					</h3>
+				</div>
+				<div class="left-item">
+					<h3>
+						<a href="#"><span>百团荟萃</span></a>
+					</h3>
+				</div>
+				<div class="left-item">
+					<h3>
+						<a href="#"><span>发现活动</span></a>
+					</h3>
+				</div>
+				<div class="left-line">
+					
+				</div>
+				<div class="left-item">
+					<h3>
+						<a href="#"><span>我的社团</span></a>
+					</h3>
+				</div>
+				<div class="left-item">
+					<h3>
+						<a href="#"><span>我的活动</span></a>
+					</h3>
+				</div>
+				<div class="left-item">
+					<h3>
+						<a href="#"><span>个人信息</span></a>
+					</h3>
+				</div>
+				<div class="left-item">
+					<h3>
+						<a href="#"><span>站内信</span></a>
+					</h3>
+				</div>
+			</div>
+			<div class="right-main">
+				<div class="right-card details hd">
+					<div class="bgimg"></div>
+					<div class="club-head">
+						<a href="#">
+							<img src="img/xunxing.jpg" alt="北斗巡星社">
+						</a>
+					</div>
+					<div class="card-content">
+						<p class = "article-title"><a href="#">北斗会内培训-天爱必备观测技术&&寒假远征宣讲</a></p>
+						<p class = "line"></p>
+						<p class="article-time">今天 13:11</p>
+					</div>
+					<div class = "article-body">
+						<p class="profile_meta" style="white-space: normal;"><label class="profile_meta_label">功能介绍</label><span class="profile_meta_value">新学年，北斗巡星会官方公众平台隆重上线，为大家带来协会活动的第一手消息，同时可以查询本月天象预报，了解天文小常识。希望大家多多关注。<br>北航北斗巡星会，英文名"Star&nbsp;Rovers”，是北京航空航天大学五星级社团。</span></p><p style="white-space: normal;"><span class="profile_arrow_wrp" id="js_profile_arrow_wrp"><em class="profile_arrow arrow_out"></em>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<em class="profile_arrow arrow_in"></em>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p><p style="white-space: normal;"><img src="http://7xob9u.com1.z0.glb.clouddn.com/52.jpg">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p><p style="white-space: normal;">大家都很踊跃嘛，想做培训的人已经约出来好多咯，每一个都好棒好精彩！大家多多报名敬请期待！<br></p><p style="white-space: normal;">这一次由曲郑鑫同学来和大家分享一下他在天文观测方面的经验，从望远镜的操作到星图的使用方法再到观测技巧都会有不一样角度的讲解哦！大家可以带个小本本来哦！曲同学还相当壕地把自己的道布森带来和大家交流！</p><p style="white-space: normal;">远征是北斗一年两度的大事，具体来说就是一起去很远很远的城市，走访天文台，一路玩玩玩，在不一样的天空下观测，听起来就很梦幻吧！这一次会长大人会进行远征的宣讲哦！有兴趣的同学们不要错过！</p><p style="white-space: normal;"><br></p><p style="white-space: normal;"><br></p><p style="white-space: normal;">时间：2015年11月11日（周三）晚20:30</p><p style="white-space: normal;">地点：教三205</p><p style="white-space: normal;">题目：从小白到中级爱好者-天文迷的必备技能（曲同学起的，好长）</p><p style="white-space: normal;">主讲：曲郑鑫</p><p style="white-space: normal;">题目：远征宣讲</p><p style="white-space: normal;">主讲：闵苑文</p><p><br></p>
+					</div>
+					<div class="enlistbox">
+						<a href="#" class="enlist"><span>报 名</span></a>
+					</div>
+				</div>
+				<div class="comment">
+					<div class="comment-publish login">
+						<div class="user-head">
+							<img src="img/user_head.png" alt="江昊">
+						</div>
+						<div class="publish">
+							<div class="p_input">
+								<textarea maxlength="500" onfocus = "if (value=='回复评论：'){value=''}" onblur = "if(value==''){value='回复评论：'}" value = "回复评论：">回复评论：</textarea>
+							</div>
+							<div class="p_button"><a href="#">发 布</a></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="comment-all">
+						<span class = "comment-count">评论 共30条</span>
+						<div class="clear"></div>
+
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-list">
+							<div class="comment-li">
+								<div class="user-head">
+									<img src="img/user_head.png" alt="评论人名">
+								</div>
+								<div class="comment-con">
+									<div class="comment-text">
+										<span>王春阳</span>
+									 	：米蛋
+									</div>
+									<div class="time">今天 14:25</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<script type="text/javascript">
+$(function(){
+  $('#loginform').submit(function(e){
+    return false;
+  });
+  
+  $('#modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+});
+</script>
+	
+	
+</body>
+</html>

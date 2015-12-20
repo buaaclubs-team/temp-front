@@ -18,6 +18,7 @@
 		ol,ul{
 			list-style: none;
 		}
+		.clear{ clear: both; height: 0; width: 0; font-size: 0;}
 		.app{
 			padding-top: 50px;
 			background: url("img/body_bg.jpg") no-repeat top center;
@@ -73,7 +74,8 @@
 			/*font-size: 16px;*/
 		}
 		.nav li a:hover{
-			color: rgb(235,115,80);
+			/*color: rgb(235,115,80);*/
+			color: rgb(250,125,60);
 		}
 		.nav li a span{
 			display: inline-block;
@@ -84,7 +86,8 @@
 			font-size: 24px;
 		}
 		.nav .cur{
-			color: rgb(235,115,80);
+			/*color: rgb(235,115,80);*/
+			color: rgb(250,125,60);
 		}
 		.hd-user{
 			float: right;
@@ -110,7 +113,7 @@
 			width: 760px;
 			min-height: 680px;
 			margin:0 auto;
-			padding: 16px 0 0 0;
+			padding: 16px 0 10px 0;
 			font-size:0px;  /*解决inline-block间隙*/
 		}
 		.left-nav{
@@ -159,6 +162,7 @@
 			margin-right:10px;
 			display: inline-block;
 			font-size: 12px;
+			position: relative;
 		}
 		.right-tab{
 			box-shadow: rgba(0, 0, 0, 0.0392157) -1px 0px 0px, rgba(0, 0, 0, 0.0392157) 0px -1px 0px, rgba(0, 0, 0, 0.0392157) 1px 0px 0px;
@@ -222,13 +226,15 @@
 		.right-body{
 			
 		}
+
 		.right-card{
 			position: relative;
 			margin-bottom: 10px;
 			background-color: #fff;
 			box-shadow:0 0 2px rgba(0,0,0,0.2);
 			border-radius: 2px;
-			padding: 16px 16px 0px 16px;
+			padding: 16px 16px 8px 16px;
+			font-size: 0px;
 		}
 		.right-card .bgimg{
 			position: absolute;
@@ -247,39 +253,7 @@
 		.right-card.zx .bgimg{
 			background-image: url("img/zixun-s.png");
 		}
-		/*.right-card:after{
-			position: absolute;
-			content: '';
-			width: 100%;
-			height: 100%;
-			top: 0;
-    		left: 0;
-			background-position: 570px 0px;
-			background-size: auto 45px;
-			background-repeat: no-repeat;
-			opacity: 0.75;
-		}
-		.right-card.hd:after{
-			background-image: url("img/huodong-s.png");
-		}
-		.right-card.zx:after{
-			background-image: url("img/zixun-s.png");
-		}*/
-		.right-card .tag{
-			position: absolute;
-			right: 0;
-			top: 0;
-			float:right;
-			border-width: 20px;
-			border-style: solid;
-			border-color: rgb(235,115,80) rgb(235,115,80) transparent transparent;
-		}
 
-		.card-first{
-			
-			font-size: 0px;
-
-		}
 		.club-head{
 			font-size:12px;
 			display:inline-block;
@@ -321,44 +295,33 @@
 		.card-content p.abstract{
 			margin-left: 16px;
 			margin-right: 16px;
+			margin-bottom: 5px;
 		}
-		.card-content .foot{
+		.card-content span.time{
+			color: #808080;
 			margin-left: 16px;
-			width: 482px;
-			height: 38px;
-			line-height: 38px;
-		}
-		.card-content .foot ul{
-			float: left;
-			width: 100%;
-			display: block;
-			margin-bottom: 4px;
-		}
-		.card-content .foot li.time{
-			float:left;
-			color: #808080;
-		}
-		.card-content .foot li.enlist{
-			float:right;
-			color: #808080;
-			width: 100px;
-			text-align: center;
-			margin-right:16px;
-		}
-		.card-content .foot li.enlist a{
-			margin-bottom: 8px;
-			display: block;
 			height: 30px;
+			line-height: 30px;
+		}
+		.right-card a.enlist{
+			display: none;
+			float: right;
+			height: 30px;
+			line-height: 30px;
+			width: 100px;
+			margin-right: 16px;
+			text-align: center;
+			color: #fff;
 			background:  #F94644;
 			border-radius: 2px;
-			color: #fff;
-			line-height: 30px;
 			font-weight: bold;
 		}
-		.card-content .foot li.enlist a:hover{
+		.right-card a.enlist:hover{
 			background:  #F80807;
 		}
-		
+		.right-card.hd a.enlist{
+			display: block;
+		}
 
 
 		@media screen and (max-width: 1000px){
@@ -368,4 +331,157 @@
 			.main{
 				width: 760px;
 			}
+		}
+
+
+
+
+
+		/*下面为details页面*/
+		.right-card.details{
+			border-radius: 2px 2px 0 0;
+			margin-bottom: 0;
+		}
+		.right-card .article-title{
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.right-card .article-time{
+			color: #808080;
+			margin-bottom: 10px;
+		}
+		.right-card .article-body{
+			font-size:14px;
+		}
+		.right-card .article-body img{
+			max-width: 560px;
+		}
+		.right-card .enlistbox{
+			display: none;
+			font-size:14px;
+			height: 30px;
+		}
+		.right-card.hd .enlistbox{
+			display: block;
+		}
+		.right-main .comment{
+			background: #e9e9f1;
+			padding-top: 16px;
+			border-top-width: 1px;
+			border-top-style: solid;
+			border-color: #d9d9d9;
+		}
+		.right-main .comment-publish{
+			padding: 0px 16px 10px 16px;
+			display: none;
+		}
+		.right-main .comment-publish.login{
+			display: block;
+		}
+		.right-main .user-head{
+			float: left;
+			width: 30px;
+			height: 30px;
+		}
+		.right-main .user-head img{
+			width: 30px;
+			height: 30px;
+		}
+		.right-main .publish{
+			margin-left: 50px;
+		}
+		
+		.right-main .p_input{
+			margin-bottom: 10px;
+		}
+		.right-main .p_input textarea{
+			overflow: hidden;
+			padding: 5px 2px 0px 6px;
+			border-style: solid;
+			border-width: 1px;
+			height: 92px;
+			font-size: 12px;
+			word-wrap: break-word;
+			line-height: 18px;
+			outline: none;
+			width: 98%;
+			background-color: #fff;
+			border-color: #ccc;
+			color: #808080;
+			text-decoration: none;
+			box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15) inset;
+			resize: none;
+			white-space: pre-wrap;
+		}
+		.right-main .p_input textarea:focus{
+			border-color: #fa7d3c !important;
+			box-shadow: none;
+		}
+		.right-main .p_button{
+			float: right;
+		}
+		.right-main .p_button a{
+			display: inline-block;
+			background: rgb(255, 129, 64);
+			border: 1px solid rgb(247,124,61);
+			color: #fff;
+			box-shadow: rgba(0, 0, 0, 0.247059) 0px 1px 2px;
+			border-radius: 2px;
+			height: 24px;
+			width: 60px;
+			line-height: 24px;
+			font-size: 12px;
+			text-align: center;
+			outline: none;
+		}
+		.right-main .p_button a:hover{
+			background: rgb(247,103,29);
+			border: 1px solid rgb(240,105,35);
+		}
+
+		.right-main .comment-all{
+			border-top-width: 0px;
+			border-top-style: solid;
+			border-color: #d9d9d9;
+			margin: 6px 16px 0px 70px;
+		}
+		.comment-all .comment-count{
+			display:block;
+			/*float:right;*/
+			color: #808080;
+		}
+		.comment-all .comment-list{
+
+		}
+		.comment-all .comment-li{
+			padding: 5px 0 7px;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			border-color: #d9d9d9;
+		}
+		.comment-all .user-head{
+			padding: 6px 0 0;
+			width: 30px;
+			height: 30px;
+			float: left;
+		}
+		.comment-all .user-head img{
+			width: 30px;
+			height: 30px;
+		}
+		.comment-all .comment-con{
+			margin-left: 40px;
+		}
+		.comment-all .comment-text{
+			padding-bottom: 2px;
+			overflow: hidden;
+			line-height: 23px;
+			word-wrap: break-word;
+		}
+		.comment-all .comment-text span{
+			color: #eb7350;
+		}
+		.comment-all .time{
+			line-height: 16px;
+			color: #808080;
 		}
