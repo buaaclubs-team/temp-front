@@ -113,11 +113,27 @@
 			</div>
 			<div class="right-main">
 				<div class="right-card allclub hd" id="test2">
-					<div class = "allclub-split">
-						<p>所有社团</p>
-						<div></div>
+					<div id="tiyuClub">
+						<div class = "allclub-split">
+							<p>体育类</p>
+							<div></div>
+						</div>
+						<!-- 由juicer填充 -->
 					</div>
-					<!-- 由juicer填充 -->
+					<div id = "shijianClub">
+						<div class = "allclub-split">
+							<p>实践类</p>
+							<div></div>
+						</div>
+						<!-- 由juicer填充 -->
+					</div>
+					<div id="kejiClub">
+						<div class = "allclub-split">
+							<p>科技类</p>
+							<div></div>
+						</div>
+						<!-- 由juicer填充 -->
+					</div>
 				</div>
 				
 			</div>
@@ -204,7 +220,7 @@
 			</div>
 			<div class = "allclub-info">
 				<p>$${club.name}</p>
-				<p>注册社员30人</p>
+				<p>注册社员$${club.club_num}人</p>
 			</div>
 		</div>
 		{@/each}
@@ -227,19 +243,46 @@
 
 			var tpl_club = $('#tpl_club').html();
 			var tpl_club_c = juicer(tpl_club);
-			var $test2 = $("#test2");
 
 			$.ajax({
-				url: url_pre+"/api/users/clubs/abstract/1",
+				url: url_pre+"/api/users/clubs/abstracts/tiyu",
 				type: "GET",
 				cache: false,
 				dataType: "json",
 				success: function(data, textStatus){
 					var hhh = tpl_club_c.render(data);
-					$(test2).append(hhh);
+					$("#tiyuClub").append(hhh);
 				},
 				error: function(){
-					alert("error");
+					alert("error1");
+				}
+			});
+
+			$.ajax({
+				url: url_pre+"/api/users/clubs/abstracts/shijian",
+				type: "GET",
+				cache: false,
+				dataType: "json",
+				success: function(data, textStatus){
+					var hhh = tpl_club_c.render(data);
+					$("#shijianClub").append(hhh);
+				},
+				error: function(){
+					alert("error2");
+				}
+			});
+
+			$.ajax({
+				url: url_pre+"/api/users/clubs/abstracts/keji",
+				type: "GET",
+				cache: false,
+				dataType: "json",
+				success: function(data, textStatus){
+					var hhh = tpl_club_c.render(data);
+					$("#kejiClub").append(hhh);
+				},
+				error: function(){
+					alert("error3");
 				}
 			});
 
