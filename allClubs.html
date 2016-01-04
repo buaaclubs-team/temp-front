@@ -2,25 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>导航条设计</title>
+	<title>百团荟萃</title>
 	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
 	<link rel="stylesheet" type="text/css" href="header2.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/juicer-min.js"></script>
 	<script type="text/javascript" src = "js/md5.js"></script>
-	<script type="text/javascript" src = "js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src = "js/juicer-min.js"></script>
 	<script type="text/javascript" src="js/json2.js"></script>
-	<script src="main.js"></script>
-	
-	
-	<style type="text/css">
-	
-	</style>
-
-	<script src="main.js"></script>
-	<script type="text/javascript">
-		var urlPre = "http://115.28.108.56:8080";
-	</script>
+	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 	<div class = "app">
@@ -31,13 +21,13 @@
 				</div>
 				<ul class="nav">
 					<li>
-						<a href="index.html" class = "cur">
+						<a href="index.html" class = "">
 							<span class = "iconfont icon">&#xe60e;</span>
 							<span>首页</span>
 						</a>
 					</li>
 					<li>
-						<a href="allClubs.html">
+						<a href="allClubs.html" class = "cur">
 							<span class = "iconfont icon">&#xe631;</span>
 							<span>百团</span>
 						</a>
@@ -50,7 +40,7 @@
 					</li>
 				</ul>
 				<ul class="nav hd-user" id="nav-user">
-					<div class = "">
+					<div>
 						<li >
 							<a href="javascript:void(0)" class = "callModel">
 								<span class = "iconfont icon">&#xe610;</span>
@@ -84,12 +74,12 @@
 			<div class="left-nav">
 				<div class="left-item">
 					<h3>
-						<a href="index.html" class = "cur"><span>首页</span></a>
+						<a href="index.html" class = ""><span>首页</span></a>
 					</h3>
 				</div>
 				<div class="left-item">
 					<h3>
-						<a href="allClubs.html"><span>百团荟萃</span></a>
+						<a href="javascript:void(0)" class = "cur"><span>百团荟萃</span></a>
 					</h3>
 				</div>
 				<div class="left-item">
@@ -122,26 +112,20 @@
 				</div>
 			</div>
 			<div class="right-main">
-				<!-- <em class = ""></em> -->
-				<div class="right-tab">
-					<ul>
-						<li class = "cur"><a href="javascript:void(0)">全部</a>
-							<span><i></i></span>
-						</li>
-						<li class = ""><a href="javascript:void(0)">活动</a><span><i></i></span></li>
-						<li class = ""><a href="javascript:void(0)">资讯</a><span><i></i></span></li>
-					</ul>
-				</div>
-				<div class="right-body" id="test1">
+				<div class="right-card allclub hd" id="test2">
+					<div class = "allclub-split">
+						<p>所有社团</p>
+						<div></div>
+					</div>
 					<!-- 由juicer填充 -->
-
 				</div>
+				
 			</div>
 		</div>
+		<br>
 	</div>
-
-
-  <div class="cd-user-modal"> 
+	
+	<div class="cd-user-modal"> 
 		<div class="cd-user-modal-container">
 			<ul class="cd-switcher">
 				<li><a href="#0">用户登录</a></li>
@@ -212,65 +196,23 @@
 		</div>
 	</div>
 
-
-	<script type="text/template" id = "tpl_card">
-		{@each txt as card}
-			{@if card.article_type === 0}
-			<div class="right-card zx">
-			{@else if card.article_type === 1}
-			<div class="right-card hd">
-			{@else}
-			<div class="right-card zx">
-			{@/if}
-				<div class="bgimg"></div>
-				<div class="club-head">
-					<a href="javascript:void(0)">
-						<img src="${card.head_url}" alt="${card.club_name}">
-						<p>${card.club_name}</p>
-					</a>
-				</div>
-				<div class="card-content">
-					<p class = "title"><a href="article.html" class = "jumpArticle" onclick = "sessionStorage.setItem('now_id',${card.article_id});">${card.article_title}</a></p>
-					<p class = "line"></p>
-
-					<p class = "abstract"><a href="article.html" class = "jumpArticle" onclick = "sessionStorage.setItem('now_id',$${card.article_id});">${card.article_abstract}</a></p>
-					<span class="time">${card.time}</span>
-					<a href="javascript:void(0)" class="enlist" onclick = "enList($${card.article_id});"><span>报 名</span></a>
-				</div>
+	<script type="text/template" id = "tpl_club">
+		{@each txt as club}
+		<div class = "allclub-item">
+			<div class = "club-head">
+				<a href="javascript:void(0)"><img src="$${club.head_url}" alt="$${club.name}"></a>
 			</div>
+			<div class = "allclub-info">
+				<p>$${club.name}</p>
+				<p>注册社员30人</p>
+			</div>
+		</div>
 		{@/each}
 	</script>
 
 	<script type="text/javascript">
-
-		function enList(article_id){
-			if (!sessionStorage.getItem('ifLog')){
-				alert("请先登陆，登陆后才可以报名");
-				return;
-			}
-			if (sessionStorage.getItem('ifLog')=="false"){
-				alert("请先登陆，登陆后才可以报名");
-				return;
-			}
-			$.ajax({
-					url: url_pre + "/api/users/"+sessionStorage['uid']+"/articles/"+article_id+"/notes/create",
-					type: "POST",
-					beforeSend: function(request){
-						request.setRequestHeader("token",sessionStorage["stu_token"]);
-						request.setRequestHeader("uid",sessionStorage["uid"]);
-						request.setRequestHeader("content-type","application/x-www-form-urlencoded");
-					},
-					success: function(data, textStatus){
-						alert("报名成功！");
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown){
-						if (XMLHttpRequest.status == 401) alert("您已报过名");
-						else alert("报名后台发生错误……");
-					}
-				});
-		}
-
 		$(document).ready(function(){
+			//维持用户登陆状态
 			if (!sessionStorage.getItem('ifLog')){
 				sessionStorage.setItem('ifLog','false');
 			}
@@ -280,62 +222,33 @@
 				$('#nav-user div:eq(1)').removeClass('hd-hide');
 				$('#nav-user div:eq(1) span:eq(1)').html(sessionStorage['stu_name']);
 			}
-			
-			url_pre = "http://buaaclubs.com:3000"; //定义全局
-			pageCount = 0;
-			nowKind = 2;  //控制当前显示所有还是活动还是资讯
 
-			var $test1 = $('#test1');
-			var tpl_card = $('#tpl_card').html();
-			var tpl_card_c = juicer(tpl_card);
+			url_pre = "http://buaaclubs.com:3000";
 
-			$test1.html("");
-			//获取开始
-			pageCount++;
+			var tpl_club = $('#tpl_club').html();
+			var tpl_club_c = juicer(tpl_club);
+			var $test2 = $("#test2");
+
 			$.ajax({
-				url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
+				url: url_pre+"/api/users/clubs/abstract/1",
 				type: "GET",
 				cache: false,
 				dataType: "json",
 				success: function(data, textStatus){
-					var hhh = tpl_card_c.render(data);
-					$test1.append(hhh);
+					var hhh = tpl_club_c.render(data);
+					$(test2).append(hhh);
 				},
 				error: function(){
-					pageCount--;
+					alert("error");
 				}
 			});
+
 
 			$('form').submit(function(){
 				return false;
 			});
-			//获取结束，维护pageCount
 
-			$(window).scroll(function(){
-				
-    	    	var htmlHeight=$(document).height();
-		        var clientHeight=$(window).height();
-        		var scrollTop=$(document).scrollTop();
-	        	//console.log("htmlHeight: "+htmlHeight+"\nclientHeight: "+clientHeight+"\nscrollTop: "+scrollTop);
-	        	if(scrollTop+clientHeight==htmlHeight){
-	        		 pageCount++;
-    	        	 $.ajax({
-						url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
-						type: "GET",
-						cache: false,
-						dataType: "json",
-						success: function(data, textStatus){
-							var hhh = tpl_card_c.render(data);
-							$test1.append(hhh);
-						},
-						error: function(){
-							pageCount --;
-						}
-					});
-        		}
-    		});
-
-    		$('#signin-btn').click(function(){
+			$('#signin-btn').click(function(){
 				var data = {
 					uid: $('#signin-id').val(),
 					passwd: $('#signin-password').val()
@@ -366,8 +279,6 @@
 				});
 
 			});
-
-			
 
 			$('#logout-btn').click(function(){
 				$.ajax({
@@ -427,30 +338,11 @@
 
 			});
 
-			$(".right-tab a").click(function(){
-				$(".right-tab li").removeClass("cur");
-				$(this).parent().addClass("cur");
-				nowKind = 2 - $(this).parent().index();
-				pageCount = 0;
-				$test1.html("");
-				pageCount++;
-				$.ajax({
-					url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
-					type: "GET",
-					cache: false,
-					dataType: "json",
-					success: function(data, textStatus){
-						var hhh = tpl_card_c.render(data);
-						$test1.append(hhh);
-					},
-					error: function(){
-						pageCount--;
-					}
-				});
-			});
+
 
 		});
 
 	</script>
+
 </body>
 </html>

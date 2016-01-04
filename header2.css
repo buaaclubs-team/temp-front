@@ -489,3 +489,53 @@
 			line-height: 16px;
 			color: #808080;
 		}
+
+		/*下面是百团荟萃页面*/
+		.right-card.allclub{
+			font-size:0;
+		}
+		.allclub-item{
+			display: inline-block;
+			margin-left: 10px;
+			margin-bottom: 24px;
+		}
+
+		
+		.club-head{
+			display: inline-block;
+		}
+		.club-head img{
+			width: 50px;
+			height: 50px;
+		}
+		.allclub-info{
+			font-size: 14px;
+			display: inline-block;
+			margin-left: 16px;
+			width: 150px;
+		}
+		.allclub-info p:nth-child(1){
+			line-height: 30px;
+			font-size: 18px;
+			color: #000;
+		}
+		.allclub-info p:nth-child(2){
+			line-height: 20px;
+			font-size: 12px;
+			color: #808080;
+		}
+
+		.allclub-split{
+			display: block;
+			font-size: 24px;
+		}
+		.allclub-split p{
+			color: #808080;
+			margin-left: 16px;
+		}
+		.allclub-split div{
+			border-top-width: 1px;
+			border-top-style: solid;
+			border-color: #888;
+			margin: 10px 10px 10px 10px;
+		}

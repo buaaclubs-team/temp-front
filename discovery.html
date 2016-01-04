@@ -31,7 +31,7 @@
 				</div>
 				<ul class="nav">
 					<li>
-						<a href="index.html" class = "cur">
+						<a href="index.html" >
 							<span class = "iconfont icon">&#xe60e;</span>
 							<span>首页</span>
 						</a>
@@ -43,7 +43,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="discovery.html">
+						<a href="discovery.html" class = "cur">
 							<span class = "iconfont icon">&#xe600;</span>
 							<span>发现</span>
 						</a>
@@ -84,7 +84,7 @@
 			<div class="left-nav">
 				<div class="left-item">
 					<h3>
-						<a href="index.html" class = "cur"><span>首页</span></a>
+						<a href="index.html"><span>首页</span></a>
 					</h3>
 				</div>
 				<div class="left-item">
@@ -94,7 +94,7 @@
 				</div>
 				<div class="left-item">
 					<h3>
-						<a href="discovery.html"><span>发现活动</span></a>
+						<a href="discovery.html" class = "cur"><span>发现活动</span></a>
 					</h3>
 				</div>
 				<div id = "leftLogin" style = "display: none;">
@@ -125,11 +125,11 @@
 				<!-- <em class = ""></em> -->
 				<div class="right-tab">
 					<ul>
-						<li class = "cur"><a href="javascript:void(0)">全部</a>
+						<li class = "cur" style="width: 80px;"><a href="javascript:void(0)">所有活动</a>
 							<span><i></i></span>
 						</li>
-						<li class = ""><a href="javascript:void(0)">活动</a><span><i></i></span></li>
-						<li class = ""><a href="javascript:void(0)">资讯</a><span><i></i></span></li>
+						<li class = "" style="width: 80px;"><a href="javascript:void(0)">正在报名</a><span><i></i></span></li>
+						<li class = "" style="width: 80px;"><a href="javascript:void(0)">以往活动</a><span><i></i></span></li>
 					</ul>
 				</div>
 				<div class="right-body" id="test1">
@@ -283,7 +283,7 @@
 			
 			url_pre = "http://buaaclubs.com:3000"; //定义全局
 			pageCount = 0;
-			nowKind = 2;  //控制当前显示所有还是活动还是资讯
+			nowKind = 1;  //控制当前显示所有还是活动还是资讯
 
 			var $test1 = $('#test1');
 			var tpl_card = $('#tpl_card').html();
@@ -428,25 +428,25 @@
 			});
 
 			$(".right-tab a").click(function(){
-				$(".right-tab li").removeClass("cur");
-				$(this).parent().addClass("cur");
-				nowKind = 2 - $(this).parent().index();
-				pageCount = 0;
-				$test1.html("");
-				pageCount++;
-				$.ajax({
-					url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
-					type: "GET",
-					cache: false,
-					dataType: "json",
-					success: function(data, textStatus){
-						var hhh = tpl_card_c.render(data);
-						$test1.append(hhh);
-					},
-					error: function(){
-						pageCount--;
-					}
-				});
+				// $(".right-tab li").removeClass("cur");
+				// $(this).parent().addClass("cur");
+				// nowKind = 2 - $(this).parent().index();
+				// pageCount = 0;
+				// $test1.html("");
+				// pageCount++;
+				// $.ajax({
+				// 	url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
+				// 	type: "GET",
+				// 	cache: false,
+				// 	dataType: "json",
+				// 	success: function(data, textStatus){
+				// 		var hhh = tpl_card_c.render(data);
+				// 		$test1.append(hhh);
+				// 	},
+				// 	error: function(){
+				// 		pageCount--;
+				// 	}
+				// });
 			});
 
 		});
