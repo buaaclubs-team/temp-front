@@ -221,12 +221,46 @@
 			<div class = "allclub-info">
 				<p>$${club.name}</p>
 				<p>注册社员$${club.club_num}人</p>
+				<div class="p_button">
+					<a href="javascript:void(0)" onclick = "joinClub('$${club.club_account}');">加 入</a>
+				</div>
 			</div>
 		</div>
 		{@/each}
 	</script>
 
 	<script type="text/javascript">
+		function joinClub(club_account){
+			if (!sessionStorage.getItem('ifLog')){
+				alert("请先登陆，登陆后才可以加入社团");
+				return;
+			}
+			if (sessionStorage.getItem('ifLog')=="false"){
+				alert("请先登陆，登陆后才可以加入社团");
+				return;
+			}
+			data = {
+				reason: "我牛逼"
+			}
+			$.ajax({
+				url: url_pre+"/api/users/clubs/apply/"+club_account,
+				type: "POST",
+				cache: false,
+				data: JSON.stringify(data),
+				beforeSend: function(request){
+					request.setRequestHeader("token",sessionStorage["stu_token"]);
+					request.setRequestHeader("uid",sessionStorage["uid"]);
+					request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+				},
+				success: function(data, textStatus){
+					alert("成功，请等待社团批准与回复");
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					alert(XMLHttpRequest.status);
+				}
+			});
+		}
+
 		$(document).ready(function(){
 			//维持用户登陆状态
 			if (!sessionStorage.getItem('ifLog')){
@@ -334,7 +368,7 @@
 						request.setRequestHeader("content-type","application/x-www-form-urlencoded");
 					},
 					success: function(data, textStatus){
-						alert("登出成功！");
+						//alert("登出成功！");
 						sessionStorage.setItem("ifLog","false");
 						sessionStorage.removeItem("uid");
 						sessionStorage.removeItem("stu_head");
@@ -380,7 +414,6 @@
 				});
 
 			});
-
 
 
 		});

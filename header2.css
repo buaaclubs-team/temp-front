@@ -424,6 +424,9 @@
 		.right-main .p_button{
 			float: right;
 		}
+		.right-main .allclub-info .p_button{
+			float: none;
+		}
 		.right-main .p_button a{
 			display: inline-block;
 			background: rgb(255, 129, 64);
