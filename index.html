@@ -306,6 +306,22 @@
 				}
 			});
 
+			//获取开始
+			pageCount++;
+			$.ajax({
+				url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
+				type: "GET",
+				cache: false,
+				dataType: "json",
+				success: function(data, textStatus){
+					var hhh = tpl_card_c.render(data);
+					$test1.append(hhh);
+				},
+				error: function(){
+					pageCount--;
+				}
+			});
+
 			$('form').submit(function(){
 				return false;
 			});
