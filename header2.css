@@ -306,7 +306,7 @@
 			height: 30px;
 			line-height: 30px;
 		}
-		.right-card a.enlist{
+		.right-card a.enlistBtn{
 			display: none;
 			float: right;
 			height: 30px;
@@ -319,10 +319,10 @@
 			border-radius: 2px;
 			font-weight: bold;
 		}
-		.right-card a.enlist:hover{
+		.right-card a.enlistBtn:hover{
 			background:  #F80807;
 		}
-		.right-card.hd a.enlist{
+		.right-card.hd a.enlistBtn{
 			display: block;
 		}
 
@@ -542,3 +542,106 @@
 			border-color: #888;
 			margin: 10px 10px 10px 10px;
 		}
+
+		/*下面是我的社团界面*/
+		.right-card.myclubs{
+			font-size:0;
+			min-height: 500px;
+		}
+
+		/*下面是我的活动界面*/
+		.right-card a.enlistBtn.hasEnlist{
+			display: none;
+			float: right;
+			height: 30px;
+			line-height: 30px;
+			width: 100px;
+			margin-right: 16px;
+			text-align: center;
+			color: #fff;
+			background:  #999;
+			border-radius: 2px;
+			font-weight: bold;
+		}
+
+		.right-card.hd a.enlistBtn.hasEnlist{
+			display: block;
+		}
+		.right-card a.enlistBtn.hasEnlist:hover{
+			background:  #888;
+		}
+	
+		/*下面是我的站内信界面*/
+		.right-card.mynotice{
+			font-size: 0;
+			min-height: 500px;
+		}
+
+		.notice-item{
+			font-size: 0px;
+			position: relative;
+			padding-bottom:8px;
+			padding-top:8px;
+		}
+		.notice-item .stamp{
+			display: inline-block;
+			text-align: center;
+			width:30px;
+			font-size: 14px;
+			position: absolute;
+			top: 48%;
+		}
+		.notice-item .stamp i{
+			margin-left: 4px;
+			margin-right: 20px;
+			display: block;
+			width: 6px;
+			height: 6px;
+			background: #f00;
+			border-radius: 50%;
+		}
+		.notice-item .content{
+			display:inline-block;
+			font-size: 14px;
+			width: 678px;
+			margin-left: 30px;
+			position: relative;
+		}
+
+		.notice-item p:nth-child(1){
+			color: #000;
+			font-weight: bold;
+			margin-bottom: 4px;
+		}
+		/*.notice-item p:nth-child(2){
+			border-top-width:1px;
+			border-top-style:solid;
+			border-color:#ccc;
+		}*/
+		.notice-item p:nth-child(2){
+			color: #808080;
+			font-size: 12px;
+			margin-left: 12px;
+			text-indent: 12px;
+		}
+		.notice-item p:nth-child(3){
+			position: absolute;
+			right:8px;
+			top:0px;
+			font-size: 12px;
+			color:#aaa;
+		}
+		.notice-item:hover{
+			background-color:#e1e6eb;
+		}
+		/*.notice-item:after{
+			border-top-size:1px;
+			border-top-style:solid;
+			border-color:#444;
+			display: block;
+			content:"";
+			height: 1px;
+			margin-left: 16px;
+			margin-right: 16px;
+			background: #222;
+		}*/

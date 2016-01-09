@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>导航条设计</title>
+	<title>发现活动</title>
 	<link rel="stylesheet" type="text/css" href="font/iconfont.css">
 	<link rel="stylesheet" type="text/css" href="header2.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -66,7 +66,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="javascript:void(0)">
+							<a href="myNotice.html">
 								<span class = "iconfont icon">&#xe618;<i class = ""></i></span>
 							</a>
 						</li>
@@ -101,12 +101,12 @@
 					<div class="left-line"></div>
 					<div class="left-item">
 						<h3>
-							<a href="javascript:void(0)"><span>我的社团</span></a>
+							<a href="myClubs.html"><span>我的社团</span></a>
 						</h3>
 					</div>
 					<div class="left-item">
 						<h3>
-							<a href="javascript:void(0)"><span>我的活动</span></a>
+							<a href="myAct.html"><span>我的活动</span></a>
 						</h3>
 					</div>
 					<div class="left-item">
@@ -116,7 +116,7 @@
 					</div>
 					<div class="left-item">
 						<h3>
-							<a href="javascript:void(0)"><span>站内信</span></a>
+							<a href="myNotice.html"><span>站内信</span></a>
 						</h3>
 					</div>
 				</div>
@@ -235,7 +235,7 @@
 
 					<p class = "abstract"><a href="article.html" class = "jumpArticle" onclick = "sessionStorage.setItem('now_id',$${card.article_id});">${card.article_abstract}</a></p>
 					<span class="time">${card.time}</span>
-					<a href="javascript:void(0)" class="enlist" onclick = "enList($${card.article_id});"><span>报 名</span></a>
+					<a href="javascript:void(0)" class="enlistBtn" onclick = "enList($${card.article_id});"><span>报 名</span></a>
 				</div>
 			</div>
 		{@/each}
@@ -291,6 +291,20 @@
 
 			$test1.html("");
 			//获取开始
+			pageCount++;
+			$.ajax({
+				url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
+				type: "GET",
+				cache: false,
+				dataType: "json",
+				success: function(data, textStatus){
+					var hhh = tpl_card_c.render(data);
+					$test1.append(hhh);
+				},
+				error: function(){
+					pageCount--;
+				}
+			});
 			pageCount++;
 			$.ajax({
 				url: url_pre + "/api/articles/"+pageCount.toString()+"/-1/"+nowKind.toString(),
