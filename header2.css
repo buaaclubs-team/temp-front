@@ -546,7 +546,7 @@
 		/*下面是我的社团界面*/
 		.right-card.myclubs{
 			font-size:0;
-			min-height: 500px;
+			min-height: 680px;
 		}
 
 		/*下面是我的活动界面*/
@@ -574,7 +574,7 @@
 		/*下面是我的站内信界面*/
 		.right-card.mynotice{
 			font-size: 0;
-			min-height: 500px;
+			min-height: 680px;
 		}
 
 		.notice-item{
@@ -645,3 +645,28 @@
 			margin-right: 16px;
 			background: #222;
 		}*/
+
+
+		/*注册表单*/
+		/*#cd-signup input[type="text"]{
+			width:400px;
+		}
+		#cd-signup input[type="password"]{
+			width:400px;
+		}
+		#cd-signup input[type="submit"]{
+			width:472px;
+		}
+		#cd-signup span{
+			display: inline-block;
+			width:65px;
+			padding-left: 5px;
+			padding-right: 5px;
+			line-height: 50px;
+		}*/
+
+		#cd-signup img{
+			position: relative;
+			top:8px;
+			display: none;
+		}

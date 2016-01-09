@@ -114,40 +114,8 @@
 			<div class="right-main">
 				<div class="right-card mynotice" id="test2">
 					<!-- juicer填充 -->
-					<div class = "notice-item">
-						<div class = "stamp">
-							<i></i>
-						</div>
-						<div class = "content">
-							<p>北航凌峰社：</p>
-							<p>这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，</p>
-							<p>今天 13:11</p>
-						</div>
-						
-					</div>
-
-					<div class = "notice-item">
-						<div class = "stamp">
-							<i></i>
-						</div>
-						<div class = "content">
-							<p>北航凌峰社：</p>
-							<p>这是站内信，这是站内信，</p>
-							<p>今天 13:11</p>
-						</div>
-						
-					</div>
-					<div class = "notice-item">
-						<div class = "stamp">
-							<i></i>
-						</div>
-						<div class = "content">
-							<p>北航凌峰社：</p>
-							<p>这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，这是站内信，</p>
-							<p>今天 13:11</p>
-						</div>
-						
-					</div>
+					<p style="font-size: 14px;text-align: center;margin-top: 30px;">您目前没有站内信</p>
+					
 					
 					
 
@@ -186,34 +154,42 @@
 			<div id="cd-signup"> <!-- 注册表单 -->
 				<form class="cd-form">
 					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-username">学号</label>
 						<input class="full-width has-padding has-border" id="signup-id" type="text" placeholder="输入学号">
+						<img src="img/right.png" alt="正确" style="width:30px;">
 					</p>
 
 					<p class="fieldset">
-						<label class="image-replace cd-email" for="signup-email">姓名</label>
-						<input class="full-width has-padding has-border" id="signup-name" type="email" placeholder="输入姓名">
+						<input class="full-width has-padding has-border" id="signup-idcard" type="text" placeholder="输入身份证后六位">
+						<img src="img/right.png" alt="正确" style="width:30px;">
 					</p>
 
 					<p class="fieldset">
-						<label class="image-replace cd-email" for="signup-email">邮箱</label>
-						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入邮箱">
+						<input class="full-width has-padding has-border" id="signup-email" type="text" placeholder="输入邮箱">
+						<img src="img/right.png" alt="正确" style="width:30px;">
+						
 					</p>
 
 					<p class="fieldset">
-						<label class="image-replace cd-email" for="signup-email">手机</label>
-						<input class="full-width has-padding has-border" id="signup-tel" type="tel" placeholder="输入手机号">
+						<input class="full-width has-padding has-border" id="signup-tel" type="text" placeholder="输入手机号">
+						<img src="img/right.png" alt="正确" style="width:30px;">
+						
 					</p>
 
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signup-password">密码</label>
-						<input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="输入密码">
-					</p>
-					<p class="fieldset">
+					
+					<!-- <p class="fieldset">
 						<label class="image-replace cd-password" for="signup-password">密码</label>
 						<input class="full-width has-padding has-border" id="check-password" type="password"  placeholder="确认密码">
+					</p> -->
+					<p class="fieldset">
+						<input class="full-width has-padding has-border" id="signup-checkId" type="text"  placeholder="输入验证码" style="width:220px;">
+						<input class="full-width2" id = "signup-getCheck" type="submit" value="免费获取验证码" style = "width:197px;margin-left: 20px;">
+						<img src="img/right.png" alt="正确" style="width:30px;">
 					</p>
 
+					<p class="fieldset">
+						<input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="输入密码">
+					</p>
+					
 					<!-- <p class="fieldset">
 						<input type="checkbox" id="accept-terms">
 						<label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
@@ -230,15 +206,19 @@
 	</div>
 
 	<script type="text/template" id = "tpl_notice">
-		{@each txt as club}
+		{@each txt as notice}
 		<div class = "notice-item">
+			{@if notice.if_read === 1}
+			<div class = "stamp" style = "display: none;">
+			{@else}
 			<div class = "stamp">
+			{@/if}
 				<i></i>
 			</div>
 			<div class = "content">
-				<p>北航凌峰社：</p>
-				<p>这是站内信，这是站内信，</p>
-				<p>今天 13:11</p>
+				<p>$${notice.sender_name}：</p>
+				<p>$${notice.content}</p>
+				<p>$${notice.time}</p>
 			</div>	
 		</div>
 		{@/each}
@@ -263,12 +243,12 @@
 
 			url_pre = "http://buaaclubs.com:3000";
 
-			var tpl_club = $('#tpl_myclub').html();
-			var tpl_club_c = juicer(tpl_club);
+			var tpl_notice = $('#tpl_notice').html();
+			var tpl_notice_c = juicer(tpl_notice);
 
 			$.ajax({
-				url: url_pre+"/api/users/clubs/all",
-				type: "GET",
+				url: url_pre+"/api/users/webmails/readall",
+				type: "POST",
 				cache: false,
 				dataType: "json",
 				beforeSend: function(request){
@@ -277,21 +257,14 @@
 						request.setRequestHeader("content-type","application/x-www-form-urlencoded");
 				},
 				success: function(data, textStatus){
-					var data0 = {txt:[]};
-					var data1 = {txt:[]};
-
-					for (var i = 0;i<data.txt.length;i++){
-						if (data.txt[i].status == 0) data0.txt.push(data.txt[i]);
-						else if (data.txt[i].status == 1) data1.txt.push(data.txt[i]);
+					if (data.txt.length>0) {
+						var hhh = tpl_notice_c.render(data);
+						$("#test2").html(hhh);
 					}
-
-					var hhh = tpl_club_c.render(data1);
-					$("#myEdClub").append(hhh);
-					hhh = tpl_club_c.render(data0);
-					$("#myIngClub").append(hhh);
+					
 				},
 				error: function(){
-					//alert("error1");
+					alert("error1");
 				}
 			});
 
@@ -323,6 +296,8 @@
 						$('#nav-user div:eq(0)').addClass('hd-hide');
 						$('#nav-user div:eq(1)').removeClass('hd-hide');
 						$('#nav-user div:eq(1) span:eq(1)').html(dataObj.name);
+
+						$('.cd-user-modal').removeClass('is-visible');
 					},
 					error: function(){
 						alert("signin error");
@@ -363,34 +338,284 @@
 
 			});
 
-			$('#signup-btn').click(function(){
-				if ($('#signup-password').val()!=$('#check-password').val()){
-					alert("两次密码输入不同");
-					return;
-				}
-				var data = {
-					name: $('#signup-name').val(),
-					uid: $('#signup-id').val(),
-					passwd: $('#signup-password').val(),
-					phone_num : $('#signup-tel').val(),
-					email: $('#signup-email').val()
-				}
-				$.ajax({
-					url: url_pre + "/api/register",
-					type: "POST",
-					dataType: "json",
-					data:  "uid="+data.uid+"&passwd="+hex_md5(data.passwd)+"&name="+data.name+"&phone_num="+data.phone_num+"&email="+data.email,
-					success: function(data, textStatus){
-						alert("success");
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown){
-						if (XMLHttpRequest.status == 401) alert("该用户已被注册");
-						else alert("注册遇到未知错误……");
-					}
-				});
+			//以下是注册处理
 
+			var wait = 60;
+			function myTime(o){
+				if (wait == 0){
+					o.removeAttribute("disabled");
+					o.value = "免费获取验证码";
+					wait = 60;
+				}
+				else {
+					o.setAttribute("disabled");
+					o.value = "重新发送("+wait+")";
+					wait --;
+					setTimeout(function(){myTime(o)},1000);
+				}
+			}
+
+			document.getElementById("signup-getCheck").onclick = function(){myTime(this);}
+
+
+
+			var flag1 = false,flag2 = false,flag3 = false,flag4 = false,flag5 = false;
+			var signup_name;
+		
+			$("#signup-id").blur(function(){  //1
+				if ($("#signup-id").val()==""){
+					$("#signup-id").next("img").css("display","inline");
+					$("#signup-id").next("img").attr("src","img/wrong.png");
+					flag1 = false;
+				}
+				else {
+					$.ajax({
+						url: url_pre + "/api/users/register/check/"+$("#signup-id").val(),
+						type: "GET",
+						cache: false,
+						dataType: 'json',
+						success: function(data,textStatus){
+							$("#signup-id").next("img").css("display","inline");
+							$("#signup-id").next("img").attr("src","img/right.png");
+							flag1 = true;
+						},
+						error: function(data,textStatus){
+							$("#signup-id").next("img").css("display","inline");
+							$("#signup-id").next("img").attr("src","img/wrong.png");
+							flag1 = false;
+						}
+					});
+				}
 			});
 
+			$("#signup-idcard").blur(function(){  //2
+				data = {
+					stu_num: $("#signup-id").val(),
+					iden_num: $("#signup-idcard").val(),
+				}
+				if ($("#signup-idcard").val().length!=6){
+					$("#signup-idcard").next("img").css("display","inline");
+					$("#signup-idcard").next("img").attr("src","img/wrong.png");
+					flag2 = false;
+				}
+				else {
+					$.ajax({
+						url: url_pre + "/api/users/register/checkiden",
+						type: "POST",
+						cache: false,
+						data: JSON.stringify(data),
+						dataType: "json",
+						success: function(data,textStatus){
+							$("#signup-idcard").next().css("display","inline");
+							$("#signup-idcard").next().attr("src","img/right.png");
+							flag2 = true;
+							signup_name = data.name;
+						},
+						error: function(data,textStatus){
+							$("#signup-idcard").next().css("display","inline");
+							$("#signup-idcard").next().attr("src","img/wrong.png");
+							flag2 = false;
+						}
+					});
+				}
+			});
+
+			$("#signup-email").blur(function(){
+				if ($("#signup-email").val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+					$("#signup-email").next("img").css("display","inline");
+					$("#signup-email").next("img").attr("src","img/right.png");
+					flag3 = true;
+				}
+				else {
+					$("#signup-email").next("img").css("display","inline");
+					$("#signup-email").next("img").attr("src","img/wrong.png");
+					flag3 = false;
+				}
+			});
+
+			$("#signup-tel").blur(function(){
+				if ($("#signup-tel").val().match(/^[1][0-9]{10}$/)){
+					$("#signup-tel").next("img").css("display","inline");
+					$("#signup-tel").next("img").attr("src","img/right.png");
+					flag4 = true;
+				}
+				else {
+					$("#signup-tel").next("img").css("display","inline");
+					$("#signup-tel").next("img").attr("src","img/wrong.png");
+					flag4 = false;
+				}
+			});
+
+			$("#signup-getCheck").click(function(){
+				data = {
+					phone_num: $("#signup-tel").val()
+				}
+				if (!$("#signup-tel").val().match(/^[1][0-9]{10}$/)){
+					alert("请输入正确的手机号码");
+				}
+				else {
+					$.ajax({
+						url: url_pre + "/api/users/phone_num/verify/code",
+							type: "POST",
+						cache: false,
+						data: JSON.stringify(data),
+						success: function(data,textStatus){
+							alert("发送短信成功");
+						},
+						error: function(data,textStatus){
+							alert("发送短信失败");
+						}
+					});
+				}
+			});
+
+			$("#signup-checkId").blur(function(){
+				data = {
+					phone_num: $("#signup-tel").val(),
+					code: hex_md5($("#signup-checkId").val())
+				}
+				if ($("#signup-checkId").val().length!=4){
+					$("#signup-checkId").next().next("img").css("display","inline");
+					$("#signup-checkId").next().next("img").attr("src","img/wrong.png");
+					flag5 = false;
+				}
+				else {
+					$.ajax({
+						url: url_pre + "/api/users/phone_num/verify",
+						type: "POST",
+						cache: false,
+						data: JSON.stringify(data),
+						success: function(data,textStatus){
+							$("#signup-checkId").next().next("img").css("display","inline");
+							$("#signup-checkId").next().next("img").attr("src","img/right.png");
+							flag5 = true;
+						},
+						error: function(data,textStatus){
+							$("#signup-checkId").next().next("img").css("display","inline");
+							$("#signup-checkId").next().next("img").attr("src","img/wrong.png");
+							flag5 = false;
+						}
+					});
+				}
+			});
+
+			$('#signup-btn').click(function(){
+				var data;
+
+				data = {
+					stu_num: $("#signup-id").val(),
+					iden_num: $("#signup-idcard").val(),
+				}
+				if ($("#signup-idcard").val().length!=6){
+					$("#signup-idcard").next("img").css("display","inline");
+					$("#signup-idcard").next("img").attr("src","img/wrong.png");
+					flag2 = false;
+				}
+				else {
+					$.ajax({
+						url: url_pre + "/api/users/register/checkiden",
+						type: "POST",
+						async: false,
+						cache: false,
+						data: JSON.stringify(data),
+						dataType: "json",
+						success: function(data,textStatus){
+							$("#signup-idcard").next().css("display","inline");
+							$("#signup-idcard").next().attr("src","img/right.png");
+							flag2 = true;
+							signup_name = data.name;
+						},
+						error: function(data,textStatus){
+							$("#signup-idcard").next().css("display","inline");
+							$("#signup-idcard").next().attr("src","img/wrong.png");
+							flag2 = false;
+						}
+					});
+				}
+
+				if ($("#signup-email").val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+					$("#signup-email").next("img").css("display","inline");
+					$("#signup-email").next("img").attr("src","img/right.png");
+					flag3 = true;
+				}
+				else {
+					$("#signup-email").next("img").css("display","inline");
+					$("#signup-email").next("img").attr("src","img/wrong.png");
+					flag3 = false;
+				}
+
+				if ($("#signup-tel").val().match(/^[1][0-9]{10}$/)){
+					$("#signup-tel").next("img").css("display","inline");
+					$("#signup-tel").next("img").attr("src","img/right.png");
+					flag4 = true;
+				}
+				else {
+					$("#signup-tel").next("img").css("display","inline");
+					$("#signup-tel").next("img").attr("src","img/wrong.png");
+					flag4 = false;
+				}
+
+
+				data = {
+					phone_num: $("#signup-tel").val(),
+					code: hex_md5($("#signup-checkId").val())
+				}
+				if ($("#signup-checkId").val().length!=4){
+					$("#signup-checkId").next().next("img").css("display","inline");
+					$("#signup-checkId").next().next("img").attr("src","img/wrong.png");
+					flag5 = false;
+				}
+				else {
+					$.ajax({
+						url: url_pre + "/api/users/phone_num/verify",
+						type: "POST",
+						async: false,
+						cache: false,
+						data: JSON.stringify(data),
+						success: function(data,textStatus){
+							$("#signup-checkId").next().next("img").css("display","inline");
+							$("#signup-checkId").next().next("img").attr("src","img/right.png");
+							flag5 = true;
+						},
+						error: function(data,textStatus){
+							$("#signup-checkId").next().next("img").css("display","inline");
+							$("#signup-checkId").next().next("img").attr("src","img/wrong.png");
+							flag5 = false;
+						}
+					});
+				}
+
+				if ($("#signup-password").val().length<8){
+					alert("密码应在八位及以上");
+				}
+				else if (flag1&&flag2&&flag3&&flag4&&flag5){
+					data = {
+						name: signup_name,
+						uid: $('#signup-id').val(),
+						email: $('#signup-email').val(),
+						phone_num : $('#signup-tel').val(),
+						passwd: $('#signup-password').val()
+					}
+					$.ajax({
+						url: url_pre + "/api/register",
+						type: "POST",
+						dataType: "json",
+						data:  "uid="+data.uid+"&passwd="+hex_md5(data.passwd)+"&name="+data.name+"&phone_num="+data.phone_num+"&email="+data.email,
+						success: function(data, textStatus){
+							$('.cd-user-modal').removeClass('is-visible');
+							alert("success");
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown){
+							if (XMLHttpRequest.status == 401) alert("该用户已被注册");
+							else alert("注册遇到未知错误……");
+						}
+					});
+				}
+				else{
+					alert("输入信息有错误");
+				}
+
+			});
 
 		});
 
