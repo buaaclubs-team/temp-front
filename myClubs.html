@@ -291,10 +291,15 @@ var _hmt = _hmt || [];
 						else if (data.txt[i].status == 1) data1.txt.push(data.txt[i]);
 					}
 
-					var hhh = tpl_club_c.render(data1);
-					$("#myEdClub1").html(hhh);
-					hhh = tpl_club_c.render(data0);
-					$("#myIngClub1").html(hhh);
+					if (data1.txt.length>1){
+						var hhh = tpl_club_c.render(data1);
+						$("#myEdClub1").html(hhh);
+					}
+					if (data0.txt.length>0){
+						hhh = tpl_club_c.render(data0);
+						$("#myIngClub1").html(hhh);
+					}
+					
 				},
 				error: function(){
 					//alert("error1");
