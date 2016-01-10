@@ -640,6 +640,10 @@
 						success: function(data, textStatus){
 							$('.cd-user-modal').removeClass('is-visible');
 							alert("success");
+							$('#leftLogin').css("display","block");
+							$('#nav-user div:eq(0)').addClass('hd-hide');
+							$('#nav-user div:eq(1)').removeClass('hd-hide');
+							$('#nav-user div:eq(1) span:eq(1)').html(dataObj.name);
 						},
 						error: function(XMLHttpRequest, textStatus, errorThrown){
 							if (XMLHttpRequest.status == 401) alert("该用户已被注册");

@@ -652,6 +652,7 @@
 							$("#signup-idcard").next().attr("src","img/right.png");
 							flag2 = true;
 							signup_name = data.name;
+							alert("欢迎你"+signup_name);
 						},
 						error: function(data,textStatus){
 							$("#signup-idcard").next().css("display","inline");
@@ -732,6 +733,17 @@
 						success: function(data, textStatus){
 							$('.cd-user-modal').removeClass('is-visible');
 							alert("success");
+							dataObj = data;
+							sessionStorage.setItem("stu_name",dataObj.name);
+							sessionStorage.setItem("uid",dataObj.uid);
+							sessionStorage.setItem("stu_token",dataObj.token);
+							sessionStorage.setItem("stu_head",dataObj.user_head);
+							sessionStorage.setItem("ifLog","true");
+
+							$('#leftLogin').css("display","block");
+							$('#nav-user div:eq(0)').addClass('hd-hide');
+							$('#nav-user div:eq(1)').removeClass('hd-hide');
+							$('#nav-user div:eq(1) span:eq(1)').html(dataObj.name);
 						},
 						error: function(XMLHttpRequest, textStatus, errorThrown){
 							if (XMLHttpRequest.status == 401) alert("该用户已被注册");
