@@ -135,7 +135,9 @@ var _hmt = _hmt || [];
 							<div></div>
 						</div>
 						<!-- 由juicer填充 -->
-						<p style="font-size: 14px;text-align: center;margin-top:35px;">您没有已经参加的社团</p>
+						<div id = "myEdClub1">
+							<p style="font-size: 14px;text-align: center;margin-top:35px;">您没有正在申请的社团</p>
+						</div>
 					</div>
 					<div id = "myIngClub">
 						<div class = "allclub-split">
@@ -143,7 +145,10 @@ var _hmt = _hmt || [];
 							<div></div>
 						</div>
 						<!-- 由juicer填充 -->
-						<p style="font-size: 14px;text-align: center;margin-top:35px;">您没有正在申请的社团</p>
+						<div id = "myIngClub1">
+							<p style="font-size: 14px;text-align: center;margin-top:35px;">您没有正在申请的社团</p>
+						</div>
+						
 					</div>
 					
 
@@ -287,9 +292,9 @@ var _hmt = _hmt || [];
 					}
 
 					var hhh = tpl_club_c.render(data1);
-					$("#myEdClub").html(hhh);
+					$("#myEdClub1").html(hhh);
 					hhh = tpl_club_c.render(data0);
-					$("#myIngClub").html(hhh);
+					$("#myIngClub1").html(hhh);
 				},
 				error: function(){
 					//alert("error1");
